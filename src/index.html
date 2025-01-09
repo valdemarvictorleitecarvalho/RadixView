@@ -31,7 +31,7 @@
             </nav>
         </header>
 
-        <div class="main-content">
+        <div class="main-content-home">
             <div class="greetings">
                 <img src="./assets/sand-bucket.png" alt="animation-dev">
                 <p>Bem-vindo<br>ao RadixView</p>
@@ -55,6 +55,39 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="main-content-sobre">
+            <div class="text-container">
+                <article class="text-struct">
+                    <h1>Radix Sort</h1>
+                    
+                    <p>Hoje, temos a missão de destrinchar e perscrutar, no intuito de sermos comparáveis (em bom tom) com Bentinho, algo que nem Machado de Assis conseguiria imaginar que um dia existiria. Sim, ele mesmo, o magnânimo <b>Radix Sort</b>, com uma lógica bastante clara e simplória, mas com uma implementação pra lá de oblíqua e dissimulada à primeira vista. Sabe como é né, tipo os olhos de Capitu.</p>  
+                    <p>Exilar-nos-emos dessa confusão, a contragosto de Gonçalves Dias. Vamos lá!</p>
+                    <h2>Introdução</h2>
+                    <p>O Radix Sort está na prateleira dos algoritmos lineares, ou seja, como diria o filósofo contemporâneo nacional mais importante e que joga com os urubus da Gávea, é "oto patamá". Mas calma lá, aprendiz de Dom Quixote!  Vamos deixar nosso mundo menos cortês e cor de rosa.</p>
+                    <p>O modelo de ordenação do Radix é organizar os números processando seus dígitos, e isso tende a ser do menos significativo para o mais significativo (Ok, senhor do contra, pode ser ao contrário também). Ele utiliza um algoritmo de ordenação estável, ou seja, mantém a ordem relativa dos elementos com os mesmos valores igual no estado inicial desordenado. Utilizaremos aqui o Counting Sort, para ordenar os elementos por buckets baseados em cada "dígito"!</p>
+                    <h2>Complexidade</h2>
+                    <p>Só que antes de partir para o código, falemos de complexidade, pois é verdade que ele é linear, porém nem sempre.</p>
+                    <p>Seja:<br><b>n:</b> o número de elementos no array.<br><b>k:</b> o número máximo de dígitos dos números.</p>
+                    <p>Então:<br><b>1.</b> Para cada dígito (k), temos que fazer uma ordenação estável em todo o array.<br><b>2.</b> Se contarmos apenas com o Counting Sort, ele tem uma complexidade de O(n + r), no qual n é o número de elementos e r o intervalo dos dígitos, que normalmente é 10, por conta do sistema decimal.</p>
+                    <p>Logo, a complexidade total do Radix Sort é <b>O(k * (n + r))</b>!</p>
+                    <p>É importante notar que se os números forem de tamanhos diferentes, seu algoritmo deve adicionar zeros na esquerda dos números menores, ao contrário, o algoritmo não funcionará, visto que não terão buckets para serem comparados dígito a dígito.</p>
+                    <p>Simplificando a complexidade total, temos que se k e r forem considerados constantes, então pode se esbaldar com a sua manina de matemático açougueiro e passar a faca nas constantes, deixando nossa complexidade em <b>O(n)</b>.</p>
+                    <p>Mas quando o Radix Sort não é linear? Por exemplo, quando k não for constante ao ter muitos dígitos ou então o intervalor r for muito grande, crescendo a complexidade.</p>
+                    <p>Em suma:<br><b>1.</b> Sim, é O(n) em casos práticos onde k e r são pequenos ou constantes, sendo mais eficiente.<br><b>2.</b> O(k * (n + r)) é o caso geral, mas no pior caso, pode até significativamente ineficiente se comparado com nosso querido Roma Aeterna, que divide para conquistar e é O(nlogn), o MergeSort.</p>
+                </article>
+            </div>
+            
+            <aside class="text-nav">
+                <div class="text-tracker">
+                    <h4>Conteúdos</h4>
+                    <ul>
+                        <li>Introdução</li>
+                        <li>Complexidade</li>
+                    </ul>
+                </div>
+            </aside>
         </div>
     </div>
 </body>

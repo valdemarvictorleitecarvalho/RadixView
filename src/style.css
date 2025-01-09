@@ -9,19 +9,21 @@
 body {
     background-color: #e4e4e7;
     font-family: 'Inter', sans-serif;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .container {
     display: grid;
     grid-template-rows: 0.8fr 5fr;
     height: 100vh;
+    overflow-y: auto;
 }
 
 .header {
     grid-row: 1 / 2;
     display: flex;
     justify-content: center;
+    height: 5.5rem;
 }
 
 .top-nav {
@@ -85,7 +87,7 @@ body {
     color: white; 
 }
 
-.main-content {
+.main-content-home {
     grid-row: 2 / 3;
     display: flex;
     justify-content: center;
@@ -199,4 +201,92 @@ body {
     opacity: 1;
     transform: scale(0.95);
     transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.main-content-sobre {
+    grid-row: 2 / 3;
+    display: none;
+    grid-template-columns: 5fr 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-container {
+    grid-column: 1 / 2;
+    padding: 40px;
+    background: white;
+    border-radius: 16px;
+    border-left: 5px solid #10b981;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 85%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.text-struct h1 {
+    font-size: 2.2rem;
+    color: #0f172a;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    border-bottom: 2px solid #10b981;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+.text-struct h2 {
+    font-size: 1.6rem;
+    color: #0f172a;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.text-struct p {
+    font-size: 1rem;
+    color: #1e293b;
+    line-height: 1.7;
+    margin-top: 1rem;
+    text-align: justify;
+}
+
+.text-struct b {
+    color: #10b981;
+}
+
+.text-nav {
+    grid-column: 2 / 3;
+    height: 100%;
+}
+
+.text-tracker {
+    position: sticky; 
+    top: 50px; 
+    right: 10px;
+    z-index: 1000; 
+    width: 250px; 
+    padding: 10px;
+}
+
+.text-tracker h4 {
+    color: #0f172a;   
+    font-weight: bold;
+}
+
+.text-tracker ul {
+    margin-top: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.text-tracker li {
+    padding: 15px;
+    border-left: 2px solid #a1a1aa;
+    color: #a1a1aa;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.text-tracker li:hover {
+    color: #0f172a;
+    border-left: 2px solid #10b981;
 }
