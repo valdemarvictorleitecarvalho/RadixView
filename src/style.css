@@ -260,7 +260,7 @@ body {
 
 .text-tracker {
     position: sticky; 
-    top: 50px; 
+    top: 100px; 
     right: 10px;
     z-index: 1000; 
     width: 250px; 
@@ -286,7 +286,7 @@ body {
     cursor: pointer;
 }
 
-.text-tracker li:hover {
+.text-tracker li:hover, .text-tracker li.active {
     color: #0f172a;
     border-left: 2px solid #10b981;
 }
@@ -296,6 +296,7 @@ pre {
     border-radius: 5px;
     overflow-x: auto;
 }
+
 code {
     font-size: 1rem;
 }
