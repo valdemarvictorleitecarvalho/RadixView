@@ -290,3 +290,19 @@ body {
     color: #0f172a;
     border-left: 2px solid #10b981;
 }
+
+pre {
+    background-color: #272822;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto; 
+    text-align: left;
+    margin: 0;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+code {
+    font-size: 1rem;
+    color: white;
+}

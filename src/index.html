@@ -72,10 +72,21 @@
                     <p>Seja:<br><b>n:</b> o número de elementos no array.<br><b>k:</b> o número máximo de dígitos dos números.</p>
                     <p>Então:<br><b>1.</b> Para cada dígito (k), temos que fazer uma ordenação estável em todo o array.<br><b>2.</b> Se contarmos apenas com o Counting Sort, ele tem uma complexidade de O(n + r), no qual n é o número de elementos e r o intervalo dos dígitos, que normalmente é 10, por conta do sistema decimal.</p>
                     <p>Logo, a complexidade total do Radix Sort é <b>O(k * (n + r))</b>!</p>
-                    <p>É importante notar que se os números forem de tamanhos diferentes, seu algoritmo deve adicionar zeros na esquerda dos números menores, ao contrário, o algoritmo não funcionará, visto que não terão buckets para serem comparados dígito a dígito.</p>
-                    <p>Simplificando a complexidade total, temos que se k e r forem considerados constantes, então pode se esbaldar com a sua manina de matemático açougueiro e passar a faca nas constantes, deixando nossa complexidade em <b>O(n)</b>.</p>
+                    <p>É importante notar que se os números forem negativos, seu algoritmo não funcionará, visto que não não possuem uma representação de dígitos separada que pode ser ordenada diretamente nesse contexto. Já o número zero, é tratado normalmente.</p>
+                    <p>Simplificando a complexidade total, temos que se k e r forem considerados constantes, então pode se esbaldar com a sua mania de matemático açougueiro e passar a faca nas constantes, deixando nossa complexidade em <b>O(n)</b>.</p>
                     <p>Mas quando o Radix Sort não é linear? Por exemplo, quando k não for constante ao ter muitos dígitos ou então o intervalor r for muito grande, crescendo a complexidade.</p>
                     <p>Em suma:<br><b>1.</b> Sim, é O(n) em casos práticos onde k e r são pequenos ou constantes, sendo mais eficiente.<br><b>2.</b> O(k * (n + r)) é o caso geral, mas no pior caso, pode até significativamente ineficiente se comparado com nosso querido Roma Aeterna, que divide para conquistar e é O(nlogn), o MergeSort.</p>
+                    <h2>Métodos Privados</h2>
+                    <pre><code class="java">
+    private int getMax(int arr[], int n) {
+        int maior = arr[0];
+    
+        for (int i = 1; i < n; i++) {
+            if (arr[i] > maior) maior = arr[i];
+        }
+        return maior;
+    }
+                        </code></pre>
                 </article>
             </div>
             
@@ -85,6 +96,9 @@
                     <ul>
                         <li>Introdução</li>
                         <li>Complexidade</li>
+                        <li>Métodos Privados</li>
+                        <li>Método Público</li>
+                        <li>Conclusão</li>
                     </ul>
                 </div>
             </aside>
