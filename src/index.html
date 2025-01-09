@@ -86,7 +86,50 @@
         }
         return maior;
     }
-                        </code></pre>
+                    </code></pre>
+                    <p>Para que nosso algoritmo funcione, antes precisamos declarar alguns métodos privados para nosso auxílio. O primeiro deles é o <b>getMax</b>, cujo objetivo nada mais e nada menos é que obter o maior elemento de um array de inteiros.</p>
+                    <p>Na primeira linha, a variável maior é inicializada com o primeiro elemento (arr[0]). O próximo passo é fazer um laço para percorrer o array e comparar o nosso atual maior elemento com os elementos restantes. Nosso laço começa em <b>i = 1</b>, justamente pois maior já foi inicializado como primeiro elemento, continuando até que i seja menor que n, verificando todos os elementos até o índice <b>n - 1</b>. Por fim, mas não menos importante, retornamos a nossa variável com o maior elemento.</p>    
+                    <pre><code class="java">
+    private void countSort(int arr[], int n, int exp) {
+        int output[] = new int[n];
+        int i;
+        int count[] = new int[10];
+        Arrays.fill(count, 0);
+    
+        for (i = 0; i < n; i++)
+            count[(arr[i] / exp) % 10]++;
+    
+        for (i = 1; i < 10; i++)
+            count[i] += count[i - 1];
+    
+        for (i = n - 1; i >= 0; i--) {
+            output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+            count[(arr[i] / exp) % 10]--;
+        }
+    
+        for (i = 0; i < n; i++)
+            arr[i] = output[i];
+    }
+                    </code></pre>
+                    <p>Agora, respeitável público, implementaremos o Counting Sort para ordernar os elementos por buckets e dígitos. Note desde já, que lidaremos com um algoritmo modificado, justamente para abarcar nossa demanda por ordenação através de dígitos unitários.</p>
+                    <p>Nas primeiras quatro linhas, estaremos lavrando a terra  com a inicialização do que necessitaremos. Primeiro, declaramos um array temporário chamado <b>output</b>, no qual armazenaremos nossa saída ordenada. Por simplicidade de não ter que ficar declarando o índice <b>(i)</b> dos laços toda vez, já o fiz no início. Em seguida, um array chamado <b>count</b> de tamanho 10 <b>(para dígitos de 0 a 9)</b> que será usado para contar a ocorrência dos dígitos no dígito atual <b>(exp)</b>, ademais também inicializei todas as posições do array com 0, utilizando o método Arrays.fill.</p>
+                    <p>Partindo para o primeiro laço, percorreremos todo o nosso array recebido de argumento com os nossos elementos, e a cada elemento, o dígito correspondente no dígito atual (exp) é calculado como <b>(arr[i] / exp) % 10</b>. Logo após, incrementaremos a frequência desse dígito no array count. </p>
+                    <p>No segundo laço, iremos converter count em um array acumulado. Agora, <b>count[i]</b> representa a posição final de um número com o dígito <b>i</b> no array ordenado.</p>
+                    <p>O terceiro laço terá uma dinâmica diferente, percorremos o array de trás para frente, pois queremos manter a <b>estabilidade</b> da ordenação, ao contrário, não estariamos utilizando o Counting. Na primeira linha, encontramos a posição correta de <b>arr[i]</b> no array output usando o valor acumulado em count e então colocamos <b>arr[i]</b> na posição calculada. Por último, decrementamos o valor correspondente no array count.</p>
+                    <p>O último laço, nada mais faz que copiar o nosso resultado ordenado do array output para o array original, <b>arr</b>.</p>
+                    <h2>Método Público</h2>
+                    <pre><code class="java">
+    public void radixSort(int arr[], int n) {
+        int maior = getMax(arr, n);
+    
+        for (int exp = 1; maior / exp > 0; exp *= 10)
+            countSort(arr, n, exp);
+    }
+                    </code></pre>
+                    <p>Finalmente, a parte mais simples e vital, o nosso algoritmo verdadeiro. Iniciamos procurando pelo <b>maior</b> com o método privado que definimos anteriormente, pois o <b>maior</b> valor determina o número de dígitos necessários para realizar as iterações do Radix Sort. Por exemplo, se o maior número for 123, será necessário processar três dígitos <b>(unidades, dezenas e centenas)</b>.</p>
+                    <p>Logo então, declaramos um laço para iterar sobre cada posição decimal. Para representar as unidades, <b>exp</b> começa como <b>1</b>. A cada iteração, o exp é multiplicado por <b>10</b>, virando dezena, centena e assim por diante. O laço termina quando <b>maior / exp > 0</b>, ou seja, quando exp ultrapassa o número de dígitos do maior elemento. Tomando novamente como exemplo o 123, o laço irá iterar para exp = 1 (unidades), exp = 10 (dezenas), e exp = 100 (centenas).</p>
+                    <h2>Conclusão</h2>
+                    <p>Hasta la vista, baby. Parabéns, agora você tem domínio do Radix, revise o material várias vezes e implemente por si mesmo para assegurar que entendeu tudo. Não esqueça de dar uma olhada no visualizador disponível na seção View. Obrigado pela leitura e até a próxima!</p>
                 </article>
             </div>
             

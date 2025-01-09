@@ -292,17 +292,10 @@ body {
 }
 
 pre {
-    background-color: #272822;
-    padding: 10px;
+    margin-top: 1rem;
     border-radius: 5px;
-    overflow-x: auto; 
-    text-align: left;
-    margin: 0;
-    position: relative;
-    left: 0;
-    top: 0;
+    overflow-x: auto;
 }
 code {
     font-size: 1rem;
-    color: white;
 }
