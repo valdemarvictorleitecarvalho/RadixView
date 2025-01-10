@@ -13,7 +13,10 @@ export function initTopNav() {
     });
     
     homeButton.addEventListener('click', () => {
-        mainContentSobre.classList.remove('fade-in');
+        if (mainContentSobre.classList.contains('fade-in')) {
+            mainContentSobre.classList.remove('fade-in');
+        }
+        
         mainContentSobre.classList.add('fade-out');
 
         setTimeout(() => {
@@ -23,12 +26,15 @@ export function initTopNav() {
             setTimeout(() => {
                 mainContentHome.classList.remove('fade-out');
                 mainContentHome.classList.add('fade-in');
-            }, 10);
+            }, 100);
         }, 500); 
     });
 
     sobreButton.addEventListener('click', () => {
-        mainContentHome.classList.remove('fade-in');
+        if (mainContentHome.classList.contains('fade-in')) {
+            mainContentHome.classList.remove('fade-in');
+        }
+
         mainContentHome.classList.add('fade-out');
 
         setTimeout(() => {
@@ -38,7 +44,7 @@ export function initTopNav() {
             setTimeout(() => {
                 mainContentSobre.classList.remove('fade-out');
                 mainContentSobre.classList.add('fade-in');
-            }, 10);
+            }, 100);
         }, 500); 
     });
 }
