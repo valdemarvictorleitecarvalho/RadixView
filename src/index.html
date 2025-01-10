@@ -146,6 +146,99 @@
                 </div>
             </aside>
         </div>
+
+        <div class="main-content-view">
+            <div class="create">
+                <button class="create-button">Criar Ordenação</button>
+            </div>
+            <div class="animation-container">
+                <div class="stats">
+                    <p>maior = </p>
+                    <p>exp = </p>
+                    <p>m / exp = </p>
+                </div>
+                <div class="primary-array">
+                    <p>[9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999]</p>
+                </div>
+                <div class="buckets-container">
+                    <div class="bucket">
+                        <p class="underscore"></p>
+                        <p class="number">0</p>
+                    </div>
+                    <div class="bucket">
+                        <p class="underscore"></p>
+                        <p class="number">1</p>
+                    </div>
+                    <div class="bucket">
+                        <p class="underscore"></p>
+                        <p class="number">2</p>
+                    </div>
+                    <div class="bucket">
+                        <p class="underscore"></p>
+                        <p class="number">3</p>
+                    </div>
+                    <div class="bucket">
+                        <p class="underscore"></p>
+                        <p class="number">4</p>
+                    </div>
+                    <div class="bucket">
+                        <p class="underscore"></p>
+                        <p class="number">5</p>
+                    </div>
+                    <div class="bucket">
+                        <p class="underscore"></p>
+                        <p class="number">6</p>
+                    </div>
+                    <div class="bucket">
+                        <p class="underscore"></p>
+                        <p class="number">7</p>
+                    </div>
+                    <div class="bucket">
+                        <p class="underscore"></p>
+                        <p class="number">8</p>
+                    </div>
+                    <div class="bucket">
+                        <p class="underscore"></p>
+                        <p class="number">9</p>
+                    </div>
+                </div>                                
+            </div>  
+        </div>
+
+        <div id="createRadix" class="dialog">
+            <div class="dialog-content">
+                <div class="top-dialog">
+                    <h2>Adicione Elementos</h2>
+                    <hr>
+                </div>
+                <form id="createRadixForm">
+                    <label for="numberSelect">Quantidade:</label>
+                    <select id="numberSelect" name="numberSelect" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    </select>
+
+                    <div id="input-container">
+                        <label for="inputNumber">Digite um número:</label>
+                        <input type="text" id="input-number" name="inputNumber" required>
+                    </div>
+                    <div id="numberList"></div>
+
+                    <div class="dialog-buttons">
+                        <button type="button" id="cancel-dialog">Sair</button>
+                        <button type="submit" id="proximo">Próximo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 </html>
