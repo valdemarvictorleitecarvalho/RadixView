@@ -6,8 +6,8 @@ export function activeCodeHighlight() {
     hljs.registerLanguage('java', java);
 
     document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.java').forEach((block) => {
-            hljs.highlightBlock(block);
+        document.querySelectorAll('.java').forEach((el) => {
+            hljs.highlightElement(el);
         });
     });
 }
