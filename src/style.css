@@ -357,11 +357,45 @@ code {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: 1px solid #4caf50;
+    padding-bottom: 1rem;
+    width: 100%;
     gap: 6rem;
 }
 
+.stat-elem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.stat-elem p {
+    font-weight: bold;
+    color: #333;
+}
+
+.stat-elem svg {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
 .primary-array {
+    font-weight: bold;
     font-size: 1.5rem;
+}
+
+.container-array {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.container-array svg {
+    width: 3rem;
+    height: 3rem;
 }
 
 .buckets-container {
@@ -369,7 +403,7 @@ code {
     gap: 2rem; 
     justify-content: center; 
     align-items: flex-end; 
-    margin-top: 11rem;
+    margin-top: 3rem;
 }
 
 .bucket {
@@ -380,6 +414,7 @@ code {
 
 .values p {
     text-align: center;
+    font-weight: bold;
     padding: 0.2rem;
     margin-bottom: 0.5rem;
     border: 2px solid #10b981;
@@ -471,7 +506,7 @@ code {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .dialog-buttons button#cancel-dialog {
@@ -481,6 +516,7 @@ code {
 
 .dialog-buttons button#cancel-dialog:hover {
     background-color: #d32f2f;
+    transform: scale(1.05);
 }
 
 .dialog-buttons button[type="submit"] {
@@ -490,4 +526,5 @@ code {
 
 .dialog-buttons button[type="submit"]:hover {
     background-color: #388e3c;
+    transform: scale(1.05);
 }

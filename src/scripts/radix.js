@@ -1,10 +1,10 @@
 export const radixAlgorithm = (function(array) {
     
     const updateStats = (maior, exp, ratio) => {
-        document.querySelector('.stats p:nth-child(1)').textContent = `maior = ${maior}`;
-        document.querySelector('.stats p:nth-child(2)').textContent = `exp = ${exp}`;
-        document.querySelector('.stats p:nth-child(3)').textContent = `m / exp = ${ratio}`;
-    }
+        document.querySelector('.stats .stat-elem:nth-child(1) p').textContent = `maior = ${maior}`;
+        document.querySelector('.stats .stat-elem:nth-child(2) p').textContent = `exp = ${exp}`;
+        document.querySelector('.stats .stat-elem:nth-child(3) p').textContent = `m / exp = ${ratio}`;
+    };    
 
     const updatePrimaryArray = (array) => {
         document.querySelector('.primary-array p').textContent = `[${array.join(', ')}]`;
