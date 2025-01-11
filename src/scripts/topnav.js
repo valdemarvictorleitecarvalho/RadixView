@@ -15,11 +15,13 @@ export function initTopNav() {
     });
     
     homeButton.addEventListener('click', () => {
-        if (mainContentSobre.classList.contains('fade-in')) {
+        if (mainContentSobre.classList.contains('fade-in') || mainContentView.classList.contains('fade-in')) {
             mainContentSobre.classList.remove('fade-in');
+            mainContentView.classList.remove('fade-in');
         }
         
         mainContentSobre.classList.add('fade-out');
+        mainContentView.classList.add('fade-out');
 
         setTimeout(() => {
             mainContentSobre.style.display = 'none';
@@ -34,11 +36,13 @@ export function initTopNav() {
     });
 
     sobreButton.addEventListener('click', () => {
-        if (mainContentHome.classList.contains('fade-in')) {
+        if (mainContentHome.classList.contains('fade-in') || mainContentView.classList.contains('fade-in')) {
+            mainContentView.classList.remove('fade-in');
             mainContentHome.classList.remove('fade-in');
         }
 
         mainContentHome.classList.add('fade-out');
+        mainContentView.classList.add('fade-out');
 
         setTimeout(() => {
             mainContentHome.style.display = 'none'; 
@@ -53,11 +57,13 @@ export function initTopNav() {
     });
 
     viewButton.addEventListener('click', () => {
-        if (mainContentView.classList.contains('fade-in')) {
-            mainContentView.classList.remove('fade-in');
+        if (mainContentHome.classList.contains('fade-in') || mainContentSobre.classList.contains('fade-in')) {
+            mainContentHome.classList.remove('fade-in');
+            mainContentSobre.classList.remove('fade-in');
         }
 
-        mainContentView.classList.add('fade-out');
+        mainContentHome.classList.add('fade-out');
+        mainContentSobre.classList.add('fade-out');
 
         setTimeout(() => {
             mainContentHome.style.display = 'none';
