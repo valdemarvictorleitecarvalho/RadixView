@@ -1,8 +1,10 @@
+import gsap from "gsap";
+
 export const radixAlgorithm = (function(array) {
     let steps = [];
     let currentStep = 0;
     let isPaused = true;
-    
+
     const updateStats = (maior, exp, ratio) => {
         document.querySelector('.stats .stat-elem:nth-child(1) p').textContent = `maior = ${maior}`;
         document.querySelector('.stats .stat-elem:nth-child(2) p').textContent = `exp = ${exp}`;
@@ -10,7 +12,18 @@ export const radixAlgorithm = (function(array) {
     };    
 
     const updatePrimaryArray = (array) => {
-        document.querySelector('.primary-array p').textContent = `[${array.join(', ')}]`;
+        const primaryArrayContainer = document.querySelector('.primary-array p');
+        
+        primaryArrayContainer.textContent = `[${array.join(', ')}]`;
+        
+        gsap.to(primaryArrayContainer, {
+            opacity: 0,
+            duration: 0.3,
+            onComplete: () => {
+                primaryArrayContainer.textContent = `[${array.join(', ')}]`;
+                gsap.to(primaryArrayContainer, { opacity: 1, duration: 0.3 });
+            },
+        });
     }
 
     const updateBuckets = (bucketData) => {
@@ -28,6 +41,13 @@ export const radixAlgorithm = (function(array) {
                 valueElement.textContent = value;
                 valueElement.classList.add('value'); 
                 valuesContainer.appendChild(valueElement);
+
+                gsap.from(valueElement, {
+                    y: -20,
+                    opacity: 0,
+                    duration: 0.5,
+                    ease: 'back.out(1.7)',
+                });
             });
         });
     };
@@ -62,6 +82,8 @@ export const radixAlgorithm = (function(array) {
     const radixSort = (arr) => {
         const maxNumber = getMax(arr);
         let sortedArr = [...arr];
+        steps = [];
+        currentStep = 0;
     
         for (let exp = 1; Math.floor(maxNumber / exp) > 0; exp *= 10) {
             const { output, buckets } = countSort(sortedArr, exp);
@@ -78,6 +100,8 @@ export const radixAlgorithm = (function(array) {
 
     const controller = {
         play: async () => {
+            if (!isPaused) return;
+
             isPaused = false;
 
             for (let i = currentStep; i < steps.length; i++) {
@@ -90,29 +114,33 @@ export const radixAlgorithm = (function(array) {
                 updateStats(step.stats.maxNumber, step.stats.exp, step.stats.ratio);
 
                 currentStep = i + 1;
-                await new Promise((resolve) => setTimeout(resolve, 4000));
+                await new Promise((resolve) => setTimeout(resolve, 5000));
             }
         },
         pause: () => {
             isPaused = true;
         },
         rewind: () => {
-            if (currentStep > 0) currentStep--;
-            
-            const step = steps[currentStep];
-            
-            updatePrimaryArray(step.array);
-            updateBuckets(step.buckets);
-            updateStats(step.stats.maxNumber, step.stats.exp, step.stats.ratio);
+            if (isPaused) {
+                if (currentStep > 0) currentStep--;
+                
+                const step = steps[currentStep];
+                
+                updatePrimaryArray(step.array);
+                updateBuckets(step.buckets);
+                updateStats(step.stats.maxNumber, step.stats.exp, step.stats.ratio);
+            }
         },
         forward: () => {
-            if (currentStep < steps.length - 1) currentStep++;
-            
-            const step = steps[currentStep];
-            
-            updatePrimaryArray(step.array);
-            updateBuckets(step.buckets);
-            updateStats(step.stats.maxNumber, step.stats.exp, step.stats.ratio);
+            if (isPaused) {
+                if (currentStep < steps.length - 1) currentStep++;
+                
+                const step = steps[currentStep];
+                
+                updatePrimaryArray(step.array);
+                updateBuckets(step.buckets);
+                updateStats(step.stats.maxNumber, step.stats.exp, step.stats.ratio);
+            }
         },
     };
 

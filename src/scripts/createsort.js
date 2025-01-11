@@ -45,16 +45,21 @@ function verifyInputIsNumber(input) {
 
 export function showDialogCreateSort() {
     const createSortButton = document.querySelector('.create-button');
-    const cancelDialogButton = document.getElementById('cancel-dialog');
+    const cancelDialogAddButton = document.getElementById('cancel-dialog');
     const addElemDialogButton = document.getElementById('add-dialog');
 
-    const dialog = document.querySelector('.dialog');
+    const howUseButton = document.getElementById('how-use-button');
+    const howUseCancelButton = document.getElementById('how-use-cancel');
+
+    const dialog = document.getElementById('createRadix')   
+    const dialogHowUse = document.getElementById('howUseRadix');
 
     createSortButton.addEventListener('click', () => {
         dialog.style.display = 'flex';
+        howUseButton.classList.remove('active');
     });
 
-    cancelDialogButton.addEventListener('click', () => {
+    cancelDialogAddButton.addEventListener('click', () => {
         dialog.style.display = 'none';
     });
 
@@ -63,6 +68,15 @@ export function showDialogCreateSort() {
         radixAlgorithm.radixSort(receiveInputValues());
         radixAlgorithm.controller.play();
         dialog.style.display = 'none';
+    });
+
+    howUseButton.addEventListener('click', () => {
+        dialogHowUse.style.display = 'flex';
+    });
+
+    howUseCancelButton.addEventListener('click', () => {
+        dialogHowUse.style.display = 'none';
+        howUseButton.classList.remove('active');
     });
 }
 
@@ -79,28 +93,30 @@ function receiveInputValues() {
     return inputValues;
 }
 
-document.getElementById('play').addEventListener('click', () => {
-    radixAlgorithm.controller.play();
-});
-
-document.getElementById('pause').addEventListener('click', () => {
-    radixAlgorithm.controller.pause();
-});
-
-document.getElementById('rewind').addEventListener('click', () => {
-    try {
-        radixAlgorithm.controller.rewind();
-    }
-    catch (e) {
-        console.error(e.message);
-    } 
-});
-
-document.getElementById('forward').addEventListener('click', () => {
-    try {
-        radixAlgorithm.controller.forward();
-    }
-    catch (e) {
-        console.error(e.message);
-    } 
-});
+export function flowSortButtons() {
+    document.getElementById('play').addEventListener('click', () => {
+        radixAlgorithm.controller.play();
+    });
+    
+    document.getElementById('pause').addEventListener('click', () => {
+        radixAlgorithm.controller.pause();
+    });
+    
+    document.getElementById('rewind').addEventListener('click', () => {
+        try {
+            radixAlgorithm.controller.rewind();
+        }
+        catch (e) {
+            console.error(e.message);
+        } 
+    });
+    
+    document.getElementById('forward').addEventListener('click', () => {
+        try {
+            radixAlgorithm.controller.forward();
+        }
+        catch (e) {
+            console.error(e.message);
+        } 
+    });
+}

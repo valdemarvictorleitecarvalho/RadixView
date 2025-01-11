@@ -153,7 +153,7 @@ body {
     text-transform: uppercase;
     color: var(--color);
     z-index: 1;
-   }
+}
    
 .button-info::before, .button-info::after {
     content: '';
@@ -326,8 +326,21 @@ code {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 30rem;
+    gap: 28rem;
     margin-bottom: 2rem;
+}
+
+.left-create {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.left-create svg {
+    width: 1.7rem;
+    height: 1.7rem;
+    cursor: pointer;
 }
 
 .control-button svg {
@@ -408,18 +421,40 @@ code {
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
-  }
+}
   
-  .create-button:hover {
+.create-button:hover {
     background-color: #23c483;
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
     color: #fff;
     transform: translateY(-7px);
-  }
-  
-  .create-button:active {
+}
+
+.create-button:active {
     transform: translateY(-1px);
-  }
+}
+
+@keyframes vibrate {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(2px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(2px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.left-create svg.active {
+    animation: vibrate 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
 
 .stats {
     display: flex;
@@ -577,12 +612,12 @@ code {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.dialog-buttons button#cancel-dialog {
+.dialog-buttons button#cancel-dialog, .dialog-buttons button#how-use-cancel {
     background-color: #f44336; 
     color: #fff;
 }
 
-.dialog-buttons button#cancel-dialog:hover {
+.dialog-buttons button#cancel-dialog:hover, .dialog-buttons button#how-use-cancel:hover {
     background-color: #d32f2f;
     transform: scale(1.05);
 }
@@ -595,4 +630,15 @@ code {
 .dialog-buttons button[type="submit"]:hover {
     background-color: #388e3c;
     transform: scale(1.05);
+}
+
+.how-use-text h3 {
+    color:#1e293b;
+    margin-top: 1rem;
+}
+
+.how-use-text p {
+    margin-top: 0.2rem;
+    margin-bottom: 1rem;
+    color: #333;
 }
