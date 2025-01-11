@@ -323,7 +323,76 @@ code {
 }
 
 .create {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30rem;
     margin-bottom: 2rem;
+}
+
+.control-button svg {
+    width: 2.3rem;
+    height: 2.3rem;
+}
+
+.create-button {
+    background-color: #4CAF50; 
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.create-button:hover {
+    background-color: #388E3C; 
+    transform: scale(1.05); 
+}
+
+.control-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.control-button button {
+    background-color: #10b981; 
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.control-button button:hover {
+    background-color: #23c483; 
+    transform: scale(1.1);
+}
+
+.control-button button svg {
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: #fff; 
+}
+
+.control-button button:active {
+    transform: scale(0.95); 
+}
+
+.control-button button:focus {
+    background-color: #23c483; 
+    transform: scale(1.10);
 }
 
 .create-button {
