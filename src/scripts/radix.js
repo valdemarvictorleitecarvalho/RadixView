@@ -4,6 +4,7 @@ export const radixAlgorithm = (function(array) {
     let steps = [];
     let currentStep = 0;
     let isPaused = true;
+    let firstFoward = true;
 
     const updateStats = (maior, exp, ratio) => {
         document.querySelector('.stats .stat-elem:nth-child(1) p').textContent = `maior = ${maior}`;
@@ -103,6 +104,7 @@ export const radixAlgorithm = (function(array) {
             if (!isPaused) return;
 
             isPaused = false;
+            firstFoward = true;
 
             for (let i = currentStep; i < steps.length; i++) {
                 if (isPaused) break;
@@ -121,9 +123,8 @@ export const radixAlgorithm = (function(array) {
             isPaused = true;
         },
         rewind: () => {
-            if (isPaused) {
-                if (currentStep > 0) currentStep--;
-                
+            if (isPaused && currentStep > 0) {
+                currentStep--; 
                 const step = steps[currentStep];
                 
                 updatePrimaryArray(step.array);
@@ -132,15 +133,22 @@ export const radixAlgorithm = (function(array) {
             }
         },
         forward: () => {
-            if (isPaused) {
-                if (currentStep < steps.length - 1) currentStep++;
-                
+            if (isPaused && currentStep < steps.length - 1 && !firstFoward) {
+                currentStep++; 
                 const step = steps[currentStep];
                 
                 updatePrimaryArray(step.array);
                 updateBuckets(step.buckets);
                 updateStats(step.stats.maxNumber, step.stats.exp, step.stats.ratio);
             }
+            else {
+                const step = steps[currentStep];
+                
+                updatePrimaryArray(step.array);
+                updateBuckets(step.buckets);
+                updateStats(step.stats.maxNumber, step.stats.exp, step.stats.ratio);
+            }
+            firstFoward = false;
         },
     };
 
