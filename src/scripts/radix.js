@@ -1,4 +1,7 @@
 export const radixAlgorithm = (function(array) {
+    let steps = [];
+    let currentStep = 0;
+    let isPaused = true;
     
     const updateStats = (maior, exp, ratio) => {
         document.querySelector('.stats .stat-elem:nth-child(1) p').textContent = `maior = ${maior}`;
@@ -28,17 +31,8 @@ export const radixAlgorithm = (function(array) {
             });
         });
     };
-       
 
-    const getMax = (arr) => {
-        const length = arr.length;
-        let mx = arr[0];
-        
-        for (let i = 1; i < length; i++) {
-          if (arr[i] > mx) mx = arr[i];
-        }
-        return mx;
-    }
+    const getMax = (arr) => Math.max(...arr);
       
     const countSort = (arr, exp) => {
         const length = arr.length;
@@ -65,7 +59,7 @@ export const radixAlgorithm = (function(array) {
         return { output, buckets };
     }
     
-    const radixSort = async (arr, delay = 500) => {
+    const radixSort = (arr) => {
         const maxNumber = getMax(arr);
         let sortedArr = [...arr];
     
@@ -73,16 +67,54 @@ export const radixAlgorithm = (function(array) {
             const { output, buckets } = countSort(sortedArr, exp);
             sortedArr = output;
 
-            updatePrimaryArray(sortedArr);
-            updateBuckets(buckets);
-            updateStats(maxNumber, exp, Math.floor(maxNumber / exp));
-
-            await new Promise((resolve) => setTimeout(resolve, delay));
+            steps.push({
+                array: [...sortedArr],
+                buckets: [...buckets],
+                stats: { maxNumber, exp, ratio: Math.floor(maxNumber / exp) },
+            });
         }
-
-        console.log(sortedArr);
         return sortedArr;
     }
 
-    return { radixSort };
+    const controller = {
+        play: async () => {
+            isPaused = false;
+
+            for (let i = currentStep; i < steps.length; i++) {
+                if (isPaused) break;
+
+                const step = steps[i];
+                
+                updatePrimaryArray(step.array);
+                updateBuckets(step.buckets);
+                updateStats(step.stats.maxNumber, step.stats.exp, step.stats.ratio);
+
+                currentStep = i + 1;
+                await new Promise((resolve) => setTimeout(resolve, 4000));
+            }
+        },
+        pause: () => {
+            isPaused = true;
+        },
+        rewind: () => {
+            if (currentStep > 0) currentStep--;
+            
+            const step = steps[currentStep];
+            
+            updatePrimaryArray(step.array);
+            updateBuckets(step.buckets);
+            updateStats(step.stats.maxNumber, step.stats.exp, step.stats.ratio);
+        },
+        forward: () => {
+            if (currentStep < steps.length - 1) currentStep++;
+            
+            const step = steps[currentStep];
+            
+            updatePrimaryArray(step.array);
+            updateBuckets(step.buckets);
+            updateStats(step.stats.maxNumber, step.stats.exp, step.stats.ratio);
+        },
+    };
+
+    return { radixSort, controller };
 })();

@@ -59,8 +59,9 @@ export function showDialogCreateSort() {
     });
 
     addElemDialogButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        radixAlgorithm.radixSort(receiveInputValues(), 5000);
+        e.preventDefault(); 
+        radixAlgorithm.radixSort(receiveInputValues());
+        radixAlgorithm.controller.play();
         dialog.style.display = 'none';
     });
 }
@@ -77,3 +78,29 @@ function receiveInputValues() {
 
     return inputValues;
 }
+
+document.getElementById('play').addEventListener('click', () => {
+    radixAlgorithm.controller.play();
+});
+
+document.getElementById('pause').addEventListener('click', () => {
+    radixAlgorithm.controller.pause();
+});
+
+document.getElementById('rewind').addEventListener('click', () => {
+    try {
+        radixAlgorithm.controller.rewind();
+    }
+    catch (e) {
+        console.error(e.message);
+    } 
+});
+
+document.getElementById('forward').addEventListener('click', () => {
+    try {
+        radixAlgorithm.controller.forward();
+    }
+    catch (e) {
+        console.error(e.message);
+    } 
+});
