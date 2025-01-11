@@ -60,7 +60,7 @@ export function showDialogCreateSort() {
 
     addElemDialogButton.addEventListener('click', (e) => {
         e.preventDefault();
-        radixAlgorithm.radixSort(receiveInputValues());
+        radixAlgorithm.radixSort(receiveInputValues(), 5000);
         dialog.style.display = 'none';
     });
 }
