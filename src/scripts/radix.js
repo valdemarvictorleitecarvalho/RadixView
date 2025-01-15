@@ -150,6 +150,17 @@ export const radixAlgorithm = (function(array) {
             }
             firstFoward = false;
         },
+        skip: () => {
+            if (isPaused) {
+                currentStep = steps.length - 1
+
+                const step = steps[currentStep];
+
+                updatePrimaryArray(step.array);
+                updateBuckets(step.buckets);
+                updateStats(step.stats.maxNumber, step.stats.exp, step.stats.ratio);
+            }
+        }
     };
 
     return { radixSort, controller };

@@ -7,7 +7,7 @@
     <title>RadixView</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="visibility: hidden;">
         <header class="header">
             <nav class="top-nav">
                 <section class="nav-section view">
@@ -167,10 +167,14 @@
                     <button id="rewind"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M19,5V19H16V5M14,5V19L3,12" />
                         </svg>
-                </button>
+                    </button>
                     <button id="forward"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M5,5V19H8V5M10,5V19L21,12" />
                         </svg>
+                    </button>
+                    <button id="skip-last"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M16,18H18V6H16M6,18L14.5,12L6,6V18Z" />
+                    </svg>
                     </button>
                 </div>
             </div>
@@ -313,8 +317,8 @@
                     <p>Selecione a quantidade de números e digite todos, cada número deve estar entre o intervalo de 0 e 999999.</p>
                     <h3>Flow Control</h3>
                     <p>O tempo de cada passo dura <b>5 segundos</b>, e não é necessário apertar o Play ao começar a animação, é <b>automático</b>.</p>
-                    <p>No canto superior direito, estão os botões de <b>Play</b>, <b>Pause</b>, <b>Rewind</b> e <b>Forward</b>, respectivamente. Se o botão estiver ativo ao ser clicado, ele estará mais claro e maior que os outros.</p>
-                    <p>Os botões de Rewind e Forward voltam e avançam <b>um passo</b>, respectivamente. Porém, eles só funcionam se a animação estiver <b>pausada</b>, assim você pode navegar <b>manualmente</b> entre os passos ou continuar a animação a partir do passo atual ao apertar Play novamente.</p>
+                    <p>No canto superior direito, estão os botões de <b>Play</b>, <b>Pause</b>, <b>Rewind</b>, <b>Forward</b> e <b>Last</b>, respectivamente. Se o botão estiver ativo ao ser clicado, ele estará mais claro e maior que os outros.</p>
+                    <p>Os botões de Rewind e Forward voltam e avançam <b>um passo</b>, respectivamente. Já Last pula direto para o <b>último passo</b>. Porém, eles só funcionam se a animação estiver <b>pausada</b>, assim você pode navegar <b>manualmente</b> entre os passos ou continuar a animação a partir do passo atual ao apertar Play novamente.</p>
                     <h3>Variáveis</h3>
                     <p>O <b>maior</b> representa o maior número entre os inputs. <b>Exp</b> representa a potência de 10 utilizada no momento para extrair o dígito. O <b>m / exp</b> é crucial para saber qual dígito está sendo avaliado, sendo sempre o dígito menos significativo <b>(último)</b>. O <b>array</b> ordenado até o determinado passo, é o maior e centralizado na tela. Cada <b>bucket</b> é representado pelos números respectivos e barras abaixo no visualizador, os números pertencentes ao bucket no passo se empilharão acima dele.</p>
                     <br>

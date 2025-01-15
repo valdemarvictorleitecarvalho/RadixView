@@ -326,7 +326,7 @@ code {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 28rem;
+    gap: 25rem;
     margin-bottom: 2rem;
 }
 
@@ -346,6 +346,11 @@ code {
 .control-button svg {
     width: 2.3rem;
     height: 2.3rem;
+}
+
+#skip-last svg {
+    width: 1.71rem;
+    height: 1.71rem;
 }
 
 .create-button {

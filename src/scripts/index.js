@@ -4,6 +4,9 @@ import { initSocialLinks } from "./myinfo.js";
 import { activeCodeHighlight } from "./codehigh.js";
 import { trackHeadingClick } from "./htracker.js";
 import { showDialogCreateSort, createInputs, flowSortButtons } from "./createsort.js";
+import { lateLoad } from "./loadsvg.js";
+
+lateLoad();
 
 createInputs();
 

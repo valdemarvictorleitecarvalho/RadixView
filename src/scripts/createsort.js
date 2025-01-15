@@ -119,4 +119,13 @@ export function flowSortButtons() {
             console.error(e.message);
         } 
     });
+
+    document.getElementById('skip-last').addEventListener('click', () => {
+        try {
+            radixAlgorithm.controller.skip();
+        }
+        catch (e) {
+            console.error(e.message);
+        } 
+    });
 }
