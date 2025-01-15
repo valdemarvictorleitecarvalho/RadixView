@@ -1,6 +1,6 @@
-# Radix-Visualizer
+# RadixView
 
-Welcome to the **Radix-Visualizer** repository! This project offers an interactive and visually engaging representation of the Radix Sort algorithm. Powered by GSAP, it showcases dynamic animations that help users visualize the sorting process step by step, with smooth transitions for arrays and buckets. 
+Welcome to the **RadixView** repository! This project offers an interactive and visually engaging representation of the Radix Sort algorithm. Powered by GSAP, it showcases dynamic animations that help users visualize the sorting process step by step, with smooth transitions for arrays and buckets. 
 
 ## Purpose
 
@@ -37,7 +37,7 @@ This project utilizes the following tools and technologies:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/Radix-Visualizer.git
+   git clone https://github.com/yourusername/RadixView.git
 
 2. **Install dependencies**:
 
