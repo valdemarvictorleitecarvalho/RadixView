@@ -27,7 +27,7 @@ export const radixAlgorithm = (function(array) {
         });
     }
 
-    const updateBuckets = (bucketData) => {
+    const updateBuckets = (bucketData, exp) => {
         const buckets = document.querySelectorAll('.buckets-container .bucket');
         
         buckets.forEach((bucket, index) => {
@@ -39,8 +39,31 @@ export const radixAlgorithm = (function(array) {
     
             values.forEach(value => {
                 const valueElement = document.createElement('p');
-                valueElement.textContent = value;
-                valueElement.classList.add('value'); 
+
+                const valueStr = value.toString();
+
+                let beforeDigit = '';
+                let afterDigit = '';
+                let currentDigit = '';
+
+                const digitIndex = valueStr.length - Math.ceil(Math.log10(exp + 1));
+
+                if (digitIndex >= 0) {
+                    beforeDigit = valueStr.slice(0, digitIndex);
+                    currentDigit = valueStr[digitIndex];
+                    afterDigit = valueStr.slice(digitIndex + 1); 
+                }
+                else {
+                    afterDigit = valueStr;
+                }
+
+                valueElement.innerHTML = 
+                    `<span>${beforeDigit}</span>` +
+                    `<span style="color: red; font-weight: bold;">${currentDigit}</span>` +
+                    `<span>${afterDigit}</span>`;
+                
+
+                valueElement.classList.add('value');
                 valuesContainer.appendChild(valueElement);
 
                 gsap.from(valueElement, {
@@ -112,7 +135,7 @@ export const radixAlgorithm = (function(array) {
                 const step = steps[i];
                 
                 updatePrimaryArray(step.array);
-                updateBuckets(step.buckets);
+                updateBuckets(step.buckets, step.stats.exp);
                 updateStats(step.stats.maxNumber, step.stats.exp, step.stats.ratio);
 
                 currentStep = i + 1;
@@ -128,7 +151,7 @@ export const radixAlgorithm = (function(array) {
                 const step = steps[currentStep];
                 
                 updatePrimaryArray(step.array);
-                updateBuckets(step.buckets);
+                updateBuckets(step.buckets, step.stats.exp);
                 updateStats(step.stats.maxNumber, step.stats.exp, step.stats.ratio);
             }
         },
@@ -138,14 +161,14 @@ export const radixAlgorithm = (function(array) {
                 const step = steps[currentStep];
                 
                 updatePrimaryArray(step.array);
-                updateBuckets(step.buckets);
+                updateBuckets(step.buckets, step.stats.exp);
                 updateStats(step.stats.maxNumber, step.stats.exp, step.stats.ratio);
             }
             else {
                 const step = steps[currentStep];
                 
                 updatePrimaryArray(step.array);
-                updateBuckets(step.buckets);
+                updateBuckets(step.buckets, step.stats.exp);
                 updateStats(step.stats.maxNumber, step.stats.exp, step.stats.ratio);
             }
             firstFoward = false;
@@ -157,7 +180,7 @@ export const radixAlgorithm = (function(array) {
                 const step = steps[currentStep];
 
                 updatePrimaryArray(step.array);
-                updateBuckets(step.buckets);
+                updateBuckets(step.buckets, step.stats.exp);
                 updateStats(step.stats.maxNumber, step.stats.exp, step.stats.ratio);
             }
         }
